@@ -764,6 +764,12 @@ try:
                             print("Error in Line - ", PC)
                             flag_for_except = 1
                             exit()
+                else :
+                    print("Illegal syntax for " + op + " operation")
+                    print("Error in Line - ", PC)
+                    flag_for_except = 1
+                    exit()
+
         elif "var" in i:
             continue
         elif (len(instruction) != 16):
