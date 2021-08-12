@@ -1,5 +1,3 @@
-# cook your dish here
-# cook your dish here
 #opcode,no.of registers,no. of imm,memory
 opcode = { 
     "add":("00000",3,0,0),
