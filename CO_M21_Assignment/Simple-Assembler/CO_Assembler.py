@@ -205,7 +205,7 @@ try:
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
 
             if (len(i) != index + 4 or index > 1):
-                print("Illegeal syntax for " + op + "operation")
+                print("Illegeal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -238,7 +238,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 4 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -271,7 +271,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 4 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -304,7 +304,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 4 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -337,7 +337,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 4 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -370,7 +370,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -398,7 +398,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -426,7 +426,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -454,7 +454,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -490,7 +490,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -527,7 +527,7 @@ try:
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             instruction += un_used
             if (len(i) != index + 2 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -553,7 +553,7 @@ try:
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             instruction += un_used
             if (len(i) != index + 2 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -578,7 +578,7 @@ try:
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             instruction += un_used
             if (len(i) != index + 2 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -604,7 +604,7 @@ try:
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             instruction += un_used
             if (len(i) != index + 2 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -628,7 +628,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -669,7 +669,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -711,7 +711,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 1 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
@@ -723,7 +723,7 @@ try:
             instruction = opcode[op][0]
             un_used = '0' * (11 - (opcode[op][1] * 3 + opcode[op][2] * 8 + opcode[op][3] * 8))
             if (len(i) != index + 3 or index > 1):
-                print("Illegal syntax for " + op + "operation")
+                print("Illegal syntax for " + op + " operation")
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
