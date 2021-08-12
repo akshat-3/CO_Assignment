@@ -62,15 +62,15 @@ try:
         for i in s:
             if not(i.isalnum() or i=='_'):
                 return False
-        return True;
+        return True
     
     
     while([] in code_input):
-        code_input.remove([]);
+        code_input.remove([])
     
     if len(code_input)>256:
         print("Max_Instructions.... Memory Overflow (instructions > 256)")
-        exit();
+        exit()
     
     if('hlt' not in code_input[-1]):
         print(error_type[8])
@@ -82,60 +82,71 @@ try:
             count+=1
     
     c=0
-    
+    PC = 0
     for i in code_input:
+        PC+=1
         if('var' in i):
             if check_name(i[i.index('var')+1]):
                 if(i[i.index('var')+1] not in var_dict):
-                    b=bin(count+c);
+                    b=bin(count+c)
                     b=b[2:len(b)]
-                    b='0'*(8-len(b))+b;
-                    var_dict[i[i.index('var')+1]]=b;
+                    b='0'*(8-len(b))+b
+                    var_dict[i[i.index('var')+1]]=b
                     c+=1
                 else:
                     print("Variable name can not be redifined")
+                    print("Error in Line - ", PC)
                     exit()
                 
             else:
                 print("Wrong Syntax for Variable Name")
+                print("Error in Line - ",PC)
                 exit()
     
     
                     
-    
+    PC = 0
     for i in range(0,len(code_input)):
+        PC+=1
         if(':' in code_input[i][0]):
             if(check_name(code_input[i][0][0:-1])):
                 if (code_input[i][0][0:-1] not in label_dict):
-                    b=bin(i-c);
+                    b=bin(i-c)
                     b=b[2:len(b)]
-                    b='0'*(8-len(b))+b;
+                    b='0'*(8-len(b))+b
                     if(b in label_dict.keys()):
                         print("Two Labels name can not be defined at same memory location")
+                        print("Error in Line - ", PC)
                         exit()    
-                    label_dict[code_input[i][0][0:-1]]=b;
+                    label_dict[code_input[i][0][0:-1]]=b
                 else:
                     print("Label name can not be redifined")
+                    print("Error in Line - ", PC)
                     exit()
                 
             else:
                 print("Wrong Syntax for Label Name")
+                print("Error in Line - ",PC)
                 exit()
-    
+    PC = 0
     for i in range(0,len(code_input)-1):
+        PC+=1
         if ('hlt' in code_input[i]):
             print(error_type[9])
+            print("Error in Line - ", PC)
             exit()
     
     ins=False
-    
+    PC = 0
     for i in code_input:
+        PC+=1
         for j in opcode:
             if j in i:
                 ins = True
         if('var'in i):
                 if(ins):
                     print(error_type[7])
+                    print("Error in Line - ", PC)
                     exit()
                     
             
@@ -143,8 +154,9 @@ try:
     
     
     machine_code=[]
-    
+    PC = 0
     for i in code_input:
+        PC+=1
         instruction=''
         if('add' in i):
             op='add'
@@ -153,20 +165,25 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+4 or index>1):
                 print("Illegeal syntax for add operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers and i[index+3] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]] + registers[i[index+3]] 
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+3]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
         
         elif('sub' in i):
@@ -177,20 +194,25 @@ try:
             
             if(len(i) != index+4 or index>1):
                 print("Illegeal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers and i[index+3] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]] + registers[i[index+3]] 
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+3]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('mul' in i):
@@ -200,20 +222,25 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+4 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers and i[index+3] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]] + registers[i[index+3]] 
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+3]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('xor' in i):
@@ -223,20 +250,25 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+4 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers and i[index+3] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]] + registers[i[index+3]] 
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+3]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
         
         elif('or' in i):
@@ -246,20 +278,25 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+4 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers and i[index+3] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]] + registers[i[index+3]] 
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+3]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('and' in i):
@@ -269,20 +306,25 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+4 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers and i[index+3] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]] + registers[i[index+3]] 
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+3]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
         
         elif('cmp' in i):
@@ -292,17 +334,21 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]]  
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
         
         elif('not' in i):
@@ -312,17 +358,21 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]]  
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
         
         elif('div' in i):
@@ -332,17 +382,21 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers and i[index+2] in registers ):
                 instruction += un_used + registers[i[index+1]] + registers[i[index+2]]  
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             elif(i[index+2]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
         
         elif('ld' in i):
@@ -352,22 +406,28 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers):
                 instruction += un_used + registers[i[index+1]]  
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
+                exit()
             mem= i[index+2]
             if(mem in var_dict):
                 instruction += var_dict[mem]
             elif(mem in label_dict):
                 print(error_type[6])
-                exit();
+                print("Error in Line - ",PC)
+                exit()
             else:
                 print("Variable Name undefined")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('st' in i):
@@ -377,6 +437,7 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers):
                 instruction += un_used + registers[i[index+1]]  
@@ -385,14 +446,18 @@ try:
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
+                exit()
             mem= i[index+2]
             if(mem in var_dict):
                 instruction += var_dict[mem]
             elif(mem in label_dict):
                 print(error_type[6])
-                exit();
+                print("Error in Line - ",PC)
+                exit()
             else:
                 print("Variable Name undefined")
+                print("Error in Line - ",PC)
                 exit()
         
                 
@@ -404,15 +469,18 @@ try:
             instruction+=un_used
             if(len(i) != index+2 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             mem = i[index+1]
             if(mem in label_dict):
                 instruction += label_dict[mem]
             elif(mem in var_dict):
                 print(error_type[6])
-                exit();
+                print("Error in Line - ",PC)
+                exit()
             else:
                 print("Label Name undefined")
+                print("Error in Line - ",PC)
                 exit()
         
                 
@@ -424,15 +492,18 @@ try:
             instruction+=un_used
             if(len(i) != index+2 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             mem = i[index+1]
             if(mem in label_dict):
                 instruction += label_dict[mem]
             elif(mem in var_dict):
                 print(error_type[6])
-                exit();
+                print("Error in Line - ",PC)
+                exit()
             else:
                 print("Label Name undefined")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('jgt' in i):
@@ -443,6 +514,7 @@ try:
             instruction+=un_used
             if(len(i) != index+2 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             mem = i[index+1]
             
@@ -450,9 +522,11 @@ try:
                 instruction += label_dict[mem]
             elif(mem in var_dict):
                 print(error_type[6])
+                print("Error in Line - ",PC)
                 exit();
             else:
                 print("Label Name undefined")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('je' in i):
@@ -463,15 +537,18 @@ try:
             instruction+=un_used
             if(len(i) != index+2 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             mem = i[index+1]
             if(mem in label_dict):
                 instruction += label_dict[mem]
             elif(mem in var_dict):
                 print(error_type[6])
-                exit();
+                print("Error in Line - ",PC)
+                exit()
             else:
                 print("Label Name undefined")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('rs' in i):
@@ -481,14 +558,17 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers):
                 instruction += un_used + registers[i[index+1]]  
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
             imm = i[index+2]
             if(imm[0]=='$'):
@@ -500,9 +580,11 @@ try:
                     instruction += b
                 else:
                     print(error_type[5])
+                    print("Error in Line - ", PC)
                     exit()
             else:
                 print("Illegal syntax for immediate name")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('ls' in i):
@@ -512,14 +594,17 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             if(i[index+1] in registers):
                 instruction += un_used + registers[i[index+1]]  
             elif(i[index+1]=="FLAGS"):
                 print(error_type[4])
+                print("Error in Line - ",PC)
                 exit()
             else:
                 print("Illegal syntax for register name")
+                print("Error in Line - ",PC)
                 exit()
             
             imm = i[index+2]
@@ -532,9 +617,11 @@ try:
                     instruction += b
                 else:
                     print(error_type[5])
+                    print("Error in Line - ", PC)
                     exit()
             else:
                 print("Illegal syntax for immediate name")
+                print("Error in Line - ",PC)
                 exit()
                 
         elif('hlt' in i):
@@ -544,6 +631,7 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+1 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             instruction += un_used
             
@@ -554,6 +642,7 @@ try:
             un_used = '0'*(11-(opcode[op][1]*3 + opcode[op][2]*8 + opcode[op][3]*8))
             if(len(i) != index+3 or index>1):
                 print("Illegal syntax for "+ op +"operation")
+                print("Error in Line - ",PC)
                 exit()
             else:
                 if(i[index+1] in registers):
@@ -578,25 +667,29 @@ try:
                         if(imm[0]=='$'):
                             num=imm[1:]
                             if(num.isnumeric() and int(num)>=0 and int(num)<256):
-                                b=bin(int(num));
+                                b=bin(int(num))
                                 b=b[2:len(b)]
-                                b='0'*(8-len(b))+b;
+                                b='0'*(8-len(b))+b
                                 instruction += b
                             else:
                                 print(error_type[5])
+                                print("Error in Line - ", PC)
                                 exit()
                         else:
                             print("Illegal syntax for immediate name")
+                            print("Error in Line - ", PC)
                             exit()
         elif "var" in i:
-            continue;
+            continue
         elif (len(instruction) != 16):
             print("Illegal instruction Syntax (General Syntax Error)")
-            exit();
+            print("Error in Line - ", PC)
+            exit()
         else:
             print("Illegal instruction Name (General Syntax Error)")
-            exit();
-        machine_code.append(instruction);
+            print("Error in Line - ", PC)
+            exit()
+        machine_code.append(instruction)
     
     for i in machine_code:
         print(i)
