@@ -76,6 +76,15 @@ try:
         flag_for_except = 1
         exit()
 
+    PC = 0
+    for i in range(0, len(code_input) - 1):
+        PC += 1
+        if ('hlt' in code_input[i]):
+            print(error_type[9])
+            print("Error in Line - ", PC)
+            flag_for_except = 1
+            exit()
+
     if ('hlt' not in code_input[-1]):
         print(error_type[8])
         flag_for_except = 1
@@ -136,14 +145,6 @@ try:
                 print("Error in Line - ", PC)
                 flag_for_except = 1
                 exit()
-    PC = 0
-    for i in range(0, len(code_input) - 1):
-        PC += 1
-        if ('hlt' in code_input[i]):
-            print(error_type[9])
-            print("Error in Line - ", PC)
-            flag_for_except = 1
-            exit()
 
     ins = False
     PC = 0
