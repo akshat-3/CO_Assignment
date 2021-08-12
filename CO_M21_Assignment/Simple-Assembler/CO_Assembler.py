@@ -71,7 +71,15 @@ try:
     if len(code_input)>256:
         print("Max_Instructions.... Memory Overflow (instructions > 256)")
         exit()
-    
+
+    PC = 0
+    for i in range(0, len(code_input) - 1):
+        PC += 1
+        if ('hlt' in code_input[i]):
+            print(error_type[9])
+            print("Error in Line - ", PC)
+            exit()
+
     if('hlt' not in code_input[-1]):
         print(error_type[8])
         exit()
@@ -128,14 +136,7 @@ try:
                 print("Wrong Syntax for Label Name")
                 print("Error in Line - ",PC)
                 exit()
-    PC = 0
-    for i in range(0,len(code_input)-1):
-        PC+=1
-        if ('hlt' in code_input[i]):
-            print(error_type[9])
-            print("Error in Line - ", PC)
-            exit()
-    
+
     ins=False
     PC = 0
     for i in code_input:
