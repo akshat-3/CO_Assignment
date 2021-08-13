@@ -61,6 +61,8 @@ try:
     def check_name(s):
         if (s in opcode or s == 'var' or s in registers):
             return False
+        if s.isnumeric():
+            return False
         for i in s:
             if not (i.isalnum() or i == '_'):
                 return False
