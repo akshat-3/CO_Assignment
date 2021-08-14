@@ -1,4 +1,3 @@
-# cook your dish here
 import sys
 
 memory=["0000000000000000"]*256#this list represents the 512 byte memory
