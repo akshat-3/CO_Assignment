@@ -1,3 +1,5 @@
+#simulator
+
 import sys
 import matplotlib.pyplot as plt
 
@@ -273,6 +275,7 @@ if __name__=="__main__":
             break
     for data in memory:
         print(data)
+<<<<<<< HEAD
 
 # bonus plotting
     plt.scatter(cycle, memory_access, c='red', edgecolors='black')
@@ -282,3 +285,5 @@ if __name__=="__main__":
     plt.xlabel("Cycle Number", fontdict=font)
     plt.ylabel("Memory Address (in base10)", fontdict=font)
     plt.savefig("Result.png")
+=======
+>>>>>>> a497a4aa5b83d6237ff70fb4553c3a68097c1831
