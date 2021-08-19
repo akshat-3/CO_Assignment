@@ -1,6 +1,12 @@
 import sys
+import matplotlib.pyplot as plt
 
 memory=["0000000000000000"]*256#this list represents the 512 byte memory
+#for bonus
+memory_access = []
+special_access = []
+special_cycle = []
+cycle = []
 
 PC=0#this variable represents the program counter
 
@@ -254,11 +260,25 @@ if __name__=="__main__":
             binary_code_input.append(string)
     loadmemory(binary_code_input)
     #########################################################
-    
+    cycle_num = 0
     #this segment is actually running the code
     while True:
         instruction=execution_engine(PC)
+        #saving for bonus-------
+        memory_access.append(PC)
+        cycle.append(cycle_num)
+        cycle_num += 1
+        #-----------------------
         if(execute(instruction)==-1):
-            break;
+            break
     for data in memory:
         print(data)
+
+# bonus plotting
+    plt.scatter(cycle, memory_access, c='red', edgecolors='black')
+    plt.scatter(special_cycle, special_access, c='red', edgecolors='black')
+    font = {'family': 'serif', 'color': 'blue', 'size': 12}
+    plt.title("Memory Access v/s Cycles")
+    plt.xlabel("Cycle Number", fontdict=font)
+    plt.ylabel("Memory Address (in base10)", fontdict=font)
+    plt.savefig("Result.png")
