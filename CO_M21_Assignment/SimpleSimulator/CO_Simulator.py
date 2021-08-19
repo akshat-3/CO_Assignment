@@ -89,6 +89,8 @@ def execute(instruction):
     elif opcode=="00101" or opcode=="00100":
         memory_address=instruction[-8:]
         memory_address=int(memory_address,2)
+        special_access.append(memory_address)
+        special_cycle.append(cycle_num - 1)
         if opcode=="00100":
             RF["111"]="0000000000000000"
             data=memory[memory_address]
@@ -281,4 +283,5 @@ if __name__=="__main__":
     plt.title("Memory Access v/s Cycles")
     plt.xlabel("Cycle Number", fontdict=font)
     plt.ylabel("Memory Address (in base10)", fontdict=font)
+    plt.show()
     plt.savefig("Result.png")
