@@ -121,7 +121,9 @@ def execute(instruction):
             quotient=value1//value2
             remainder=value1%value2
             quotient=bin(quotient)
+            quotient = "0"*(16-len(quotient))+quotient
             remainder=bin(remainder)
+            remainder="0"*(16-len(remainder))+remainder
             quotient=quotient[2:]
             remainder=remainder[2:]
             RF["000"]=quotient
