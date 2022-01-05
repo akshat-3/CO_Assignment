@@ -46,6 +46,7 @@ def execute(instruction):
     opcode=instruction[0:5]
     #below case is for halt
     if opcode=="10011":
+        RF["111"]="0000000000000000"
         print(state())
         return -1;
     
@@ -162,12 +163,16 @@ def execute(instruction):
             print(state())
             PC+=1
         elif opcode=="01000":
-            RF[reg1]=immediate+RF[reg1][0:8]
+            bits = int(immediate,2);
+            RF[reg1]=RF[reg1][:-bits]
+            RF[reg1]='0'*(16-len(RF[reg1])) + RF[reg1]
             RF["111"]="0000000000000000"
             print(state())
             PC+=1
         else:
-            RF[reg1]=RF[reg1][8:]+immediate
+            bits = int(immediate,2);
+            RF[reg1] = RF[reg1] + '0'*bits
+            RF[reg1]=RF[reg1][-16:]
             RF["111"]="0000000000000000"
             print(state())
             PC+=1
